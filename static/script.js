@@ -1,0 +1,1 @@
+console.log("Autocomplete and Spell Corrector initialized.");

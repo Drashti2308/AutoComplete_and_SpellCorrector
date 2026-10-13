@@ -1,0 +1,22 @@
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+#suggestions {
+    margin-top: 10px;
+}
