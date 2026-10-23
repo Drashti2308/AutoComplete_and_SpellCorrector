@@ -63,3 +63,32 @@ def clean_dictionary():
 
 if __name__ == "__main__":
     clean_dictionary()
+
+    # Add common words missing from the source dataset
+    extra_words = {
+        "hello": 100000,
+        "world": 90000,
+        "computer": 120000,
+        "banana": 90000,
+        "apple": 100000
+    }
+
+    # Read existing words
+    existing_words = set()
+
+    with open(OUTPUT_FILE, "r", encoding="utf-8", newline="") as file:
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            existing_words.add(row["word"])
+
+    # Add only words that are missing
+    with open(OUTPUT_FILE, "a", encoding="utf-8", newline="") as file:
+        writer = csv.writer(file)
+
+        for word, frequency in extra_words.items():
+            if word not in existing_words:
+                writer.writerow([word, frequency])
+                print(f"Added missing word: {word}")
+
+    print("Dictionary preparation completed!")
