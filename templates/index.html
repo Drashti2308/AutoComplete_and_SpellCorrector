@@ -4,23 +4,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autocomplete and Spell Corrector</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Autocomplete & Spell Corrector</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
 </head>
+
 <body>
-    <main class="container">
-        <h1>Autocomplete and Spell Corrector</h1>
-        <p>DSA Project using Trie and Dynamic Programming</p>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">A</div>
+            <span>WordWise</span>
+        </div>
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Start typing a word..."
-            autocomplete="off"
-        >
+        <span class="project-label">DSA PROJECT</span>
+    </header>
 
-        <div id="suggestions"></div>
-        <div id="corrections"></div>
+    <main class="main-container">
+
+        <section class="hero">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Intelligent Word Assistance
+            </div>
+
+            <h1>
+                Find the right word,<br>
+                <span>faster.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover words as you type and correct spelling mistakes
+                with our Trie-based autocomplete and spell-correction system.
+            </p>
+        </section>
+
+        <section class="search-card">
+            <label for="searchInput" class="input-label">
+                Search or enter a word
+            </label>
+
+            <div class="search-wrapper">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Try typing 'comput' or 'helo'..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-describedby="search-help"
+                >
+
+                <button
+                    type="button"
+                    id="clearButton"
+                    class="clear-button"
+                    aria-label="Clear input"
+                    hidden
+                >
+                    &times;
+                </button>
+            </div>
+
+            <p id="search-help" class="input-help">
+                Start typing to explore autocomplete and spelling suggestions.
+            </p>
+
+            <div class="results-grid">
+
+                <section class="result-section">
+                    <div class="section-heading">
+                        <div class="heading-icon autocomplete-icon">A</div>
+
+                        <div>
+                            <h2>Autocomplete</h2>
+                            <p>Complete your word</p>
+                        </div>
+                    </div>
+
+                    <div id="suggestions" class="suggestion-list">
+                        <p class="empty-state">
+                            Suggestions will appear here.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="result-section">
+                    <div class="section-heading">
+                        <div class="heading-icon correction-icon">✓</div>
+
+                        <div>
+                            <h2>Spell Correction</h2>
+                            <p>Find possible corrections</p>
+                        </div>
+                    </div>
+
+                    <div id="corrections" class="suggestion-list">
+                        <p class="empty-state">
+                            Spelling suggestions will appear here.
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+        <section class="info-row">
+            <article class="info-card">
+                <div class="info-number">01</div>
+                <div>
+                    <h3>Trie Data Structure</h3>
+                    <p>Efficient prefix-based word suggestions.</p>
+                </div>
+            </article>
+
+            <article class="info-card">
+                <div class="info-number">02</div>
+                <div>
+                    <h3>Dynamic Programming</h3>
+                    <p>Edit-distance-based spelling corrections.</p>
+                </div>
+            </article>
+        </section>
+
+        <footer class="footer">
+            <span>WordWise · Autocomplete & Spell Corrector</span>
+            <span>Built with Python and Flask</span>
+        </footer>
+
     </main>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
