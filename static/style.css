@@ -1,22 +1,24 @@
 
-body {
-    font-family: Arial, sans-serif;
-    max-width: 700px;
-    margin: 60px auto;
-    padding: 20px;
+#suggestions,
+#corrections {
+    margin-top: 8px;
+    text-align: left;
 }
 
-h1 {
-    text-align: center;
+.suggestion-item,
+.correction-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px;
 }
 
-#searchInput {
-    width: 100%;
-    padding: 12px;
-    box-sizing: border-box;
+.suggestion-item:hover,
+.correction-item:hover {
+    background-color: #eeeeee;
+}
+
+#corrections h3 {
+    margin: 18px 0 6px;
     font-size: 16px;
 }
 
-#suggestions {
-    margin-top: 10px;
-}
