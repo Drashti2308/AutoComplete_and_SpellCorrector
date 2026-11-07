@@ -1,7 +1,10 @@
 from core.trie import Trie
 from core.autocomplete import Autocomplete
 from core.dictionary_loader import load_dictionary
-
+"""This file tests autocomplete using the actual dictionary dataset. 
+It verifies whether dictionary words are loaded and whether 
+the Trie-based autocomplete system returns relevant suggestions for different input prefixes.
+"""
 
 def test_dictionary_autocomplete():
     print("Loading dictionary...")

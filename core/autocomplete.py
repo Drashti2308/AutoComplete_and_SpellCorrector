@@ -1,5 +1,9 @@
 from core.trie import Trie
 from core.trie_node import TrieNode
+"""This file implements the autocomplete functionality using the Trie. 
+It accepts a user-entered prefix, searches for the corresponding Trie node, 
+explores its child nodes, and collects matching words as suggestions. 
+The suggestions are returned according to their ranking and frequency."""
 
 
 class Autocomplete:

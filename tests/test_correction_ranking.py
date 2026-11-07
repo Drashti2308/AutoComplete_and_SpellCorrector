@@ -2,7 +2,10 @@
 from core.dictionary_loader import load_dictionary
 from core.spell_corrector import SpellCorrector
 from core.edit_distance import levenshtein_distance
-
+"""This file tests the ranking mechanism of the spell corrector.
+ It checks whether suggested words are ordered according to the ranking criteria, 
+ including edit distance, character similarity, common prefix, length difference, and word frequency.
+ """
 
 def main():
     dictionary = load_dictionary()
