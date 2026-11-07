@@ -1,4 +1,8 @@
 from core.trie_node import TrieNode
+"""This file implements the Trie data structure.
+ It provides methods to insert words, search for complete words, 
+ and check whether a given prefix exists.
+ It organizes dictionary words character by character and allows efficient prefix-based searching."""
 
 
 class Trie:

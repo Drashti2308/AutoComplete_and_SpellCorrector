@@ -1,5 +1,9 @@
 from core.trie import Trie
 from core.autocomplete import Autocomplete
+"""This file tests the autocomplete functionality. 
+It verifies whether the system returns appropriate word suggestions for user-entered prefixes 
+and checks the correctness of the autocomplete results.
+"""
 
 
 def test_autocomplete():

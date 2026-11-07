@@ -1,5 +1,6 @@
 from core.trie import Trie
-
+"""This file tests the basic functionality of the Trie data structure. 
+It checks whether words can be inserted and searched correctly and verifies that prefix searching works as expected."""
 
 def test_trie():
     trie = Trie()
