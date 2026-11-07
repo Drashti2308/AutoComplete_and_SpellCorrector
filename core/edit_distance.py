@@ -1,7 +1,10 @@
-def levenshtein_distance(word1, word2):
+def levenshtein_distance(word1, word2, max_distance=None):
     """
-    Calculate the minimum number of insertions, deletions,
-    and substitutions needed to transform word1 into word2.
+    Calculate Levenshtein distance using optimized
+    banded dynamic programming.
+
+    If max_distance is provided, calculations stop
+    when the distance exceeds that threshold.
     """
 
     word1 = word1.lower()
@@ -10,30 +13,68 @@ def levenshtein_distance(word1, word2):
     m = len(word1)
     n = len(word2)
 
-    # Create a DP table
-    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    # Length difference gives a lower bound on edit distance.
+    if max_distance is not None:
+        if abs(m - n) > max_distance:
+            return max_distance + 1
 
-    # Transforming a word into an empty string requires deletions
-    for i in range(m + 1):
-        dp[i][0] = i
+    # Keep the shorter word as the second dimension.
+    if n > m:
+        word1, word2 = word2, word1
+        m, n = n, m
 
-    # Transforming an empty string into a word requires insertions
-    for j in range(n + 1):
-        dp[0][j] = j
+    if max_distance is None:
+        previous = list(range(n + 1))
 
-    # Fill the DP table
+        for i in range(1, m + 1):
+            current = [i] + [0] * n
+
+            for j in range(1, n + 1):
+                cost = 0 if word1[i - 1] == word2[j - 1] else 1
+
+                current[j] = min(
+                    previous[j] + 1,
+                    current[j - 1] + 1,
+                    previous[j - 1] + cost
+                )
+
+            previous = current
+
+        return previous[n]
+
+    # Initialize banded DP.
+    infinity = max_distance + 1
+
+    previous = [infinity] * (n + 1)
+
+    for j in range(min(n, max_distance) + 1):
+        previous[j] = j
+
+    # Calculate only cells inside the allowed distance band.
     for i in range(1, m + 1):
-        for j in range(1, n + 1):
 
-            if word1[i - 1] == word2[j - 1]:
-                cost = 0
-            else:
-                cost = 1
+        current = [infinity] * (n + 1)
 
-            dp[i][j] = min(
-                dp[i - 1][j] + 1,       # Deletion
-                dp[i][j - 1] + 1,       # Insertion
-                dp[i - 1][j - 1] + cost # Match or substitution
+        if i <= max_distance:
+            current[0] = i
+
+        start = max(1, i - max_distance)
+        end = min(n, i + max_distance)
+
+        for j in range(start, end + 1):
+
+            cost = 0 if word1[i - 1] == word2[j - 1] else 1
+
+            current[j] = min(
+                previous[j] + 1,
+                current[j - 1] + 1,
+                previous[j - 1] + cost
             )
 
-    return dp[m][n]
+        # Early termination.
+        if min(current[start:end + 1]) > max_distance:
+            return infinity
+
+        previous = current
+
+    return previous[n]

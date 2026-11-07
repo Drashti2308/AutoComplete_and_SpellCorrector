@@ -22,7 +22,11 @@ for word, frequency in dictionary:
 autocomplete = Autocomplete(trie)
 
 # Initialize the spell corrector using the same dictionary
-spell_corrector = SpellCorrector(dictionary)
+spell_corrector = SpellCorrector(
+    dictionary,
+    max_distance=2,
+    trie=trie
+)
 
 print(f"Loaded {len(dictionary)} words into the Trie.")
 print("Autocomplete and spell correction are ready.")
