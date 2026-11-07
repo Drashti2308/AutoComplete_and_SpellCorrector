@@ -17,7 +17,7 @@
 | 202618015 | Rachit Zaveri |
 | 202618022 | Diya Shah |
 | 202618023 | Drashti Akbari |
-| 202618043 | Priyanshu Madi |
+| 202618046 | Priyanshu Madi |
 
 ---
 
