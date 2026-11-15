@@ -304,6 +304,7 @@ AutoComplete_and_SpellCorrector/
 | `core/edit_distance.py` | Implements Levenshtein edit distance using dynamic programming, including the optimized banded calculation. |
 | `core/spell_corrector.py` | Implements spell correction, candidate searching, Trie-based approximate search, branch pruning, similarity scoring, and ranking. |
 | `data/` | Contains the dictionary dataset used by the application. |
+| `data/clean_dictionary.py` | Offline preprocessing script that reads the raw dataset, normalizes words, removes symbols and duplicates using a hash set, and generates the clean `words.csv`. |
 | `templates/index.html` | Defines the web application's HTML structure. |
 | `static/style.css` | Contains the visual styling of the web interface. |
 | `static/script.js` | Handles browser-side interactions and communicates with the Flask API. |
