@@ -261,7 +261,9 @@ AutoComplete_and_SpellCorrector/
 │   └── trie_node.py
 │
 ├── data/
-│   └── valid_words_sorted_by_frequency.csv
+│   ├── valid_words_sorted_by_frequency.csv
+│   ├── clean_dictionary.py
+│   └── words.csv
 │
 ├── static/
 │   ├── script.js
